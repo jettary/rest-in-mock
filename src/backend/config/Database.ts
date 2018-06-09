@@ -3,7 +3,9 @@ import { ConnectionOptions } from 'typeorm';
 export default [{
   type: 'postgres',
 
-  entities: [],
+  entities: [
+    (process.env.NODE_ENV !== 'local') ? 'compiled/models/*.js' : 'models/*.ts'
+  ],
 
   host: process.env.DB_HOST,
   port: parseInt(process.env.DB_PORT, 10),
