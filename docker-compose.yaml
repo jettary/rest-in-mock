@@ -6,6 +6,7 @@ services:
     ports:
       - '5432:5432'
     environment:
+      - NODE_ENV=local
       - POSTGRES_DB=rest_mock_db
       - POSTGRES_USER=rest_mock_user
       - POSTGRES_PASSWORD=rest_mock_password
