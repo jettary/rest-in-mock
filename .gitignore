@@ -1,0 +1,17 @@
+# System files
+.DS_Store
+
+# IDE settings
+.idea
+.vscode/*
+
+# Insatence specific files
+postgres-data/
+
+node_modules/
+ts-node/
+ts-node-*
+npm-debug.log
+
+compiled/
+ts-sources-list.txt

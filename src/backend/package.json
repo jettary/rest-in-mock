@@ -1,0 +1,26 @@
+{
+  "name": "rest-mock",
+  "version": "0.0.1",
+  "description": "REST Mock server. Provides REST API to manipulate collections and manipulates items within collection",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "pm2 start ./compiled/app.js --no-daemon",
+    "watch": "nodemon --watch '**/*.ts' --exec ./node_modules/.bin/ts-node ./app.ts"
+  },
+  "keywords": [
+    "rest",
+    "mock",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Valentin Zlydnev",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^2.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5",
+    "ts-node": "^6.1.0"
+  }
+}
