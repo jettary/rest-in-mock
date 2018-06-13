@@ -3,6 +3,7 @@
     "module": "commonjs",
     "allowJs": true,
     "sourceMap": true,
+    "skipLibCheck": true,
     "lib": ["es7"],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
