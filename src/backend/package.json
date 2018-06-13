@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
 
     "prestart": "tsc --project tsconfig.json --outDir compiled/",
-    "start": "pm2 start ./compiled/app.js --no-daemon",
+    "start": "pm2 start ./compiled/app.js --cwd=./compiled --no-daemon",
 
     "watch": "nodemon --watch '**/*.ts' --exec ./node_modules/.bin/ts-node ./app.ts",
 

@@ -1,11 +1,16 @@
 import * as _ from 'lodash';
 import { Express, Router } from 'express';
+import { BaseController } from './Controller';
 import * as controllers from '../controllers';
 
 export const Mount = (app: Express) => {
   const router = Router();
 
-  _.forEach(controllers, controllerClass => {
+  _.forIn(controllers, controllerClass => {
+    if (!(controllerClass instanceof BaseController)) {
+      return;
+    }
+
     router.get(controllerClass.base, (req, res, next) => {
       const instance = new controllerClass(req, res, next);
       instance.list();

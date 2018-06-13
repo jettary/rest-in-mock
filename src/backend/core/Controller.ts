@@ -1,8 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
+import { GeneralException } from './Exceptions';
 
 export class BaseController {
 
-  public static base: string = '/api';
+  public static base: string = '';
 
   protected req: Request;
   protected res: Response;
@@ -13,22 +14,22 @@ export class BaseController {
   }
 
   public list() {
-    return this.res.json({ items: [], total: 0 });
+    return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 
   public index(id: number) {
-    return this.res.json({ item: { id } });
+    return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 
   public create() {
-    return this.index(0);
+    return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 
   public update(id: number) {
-    return this.index(0);
+    return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 
   public remove(id: number) {
-    return this.res.json({ message: 'OK' });
+    return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 }
