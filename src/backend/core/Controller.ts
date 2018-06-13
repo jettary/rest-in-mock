@@ -1,15 +1,8 @@
+import * as _ from 'lodash';
 import { NextFunction, Request, Response } from 'express';
+import { getConnection } from 'typeorm';
 import { GeneralException } from './Exceptions';
-
-export interface ControllerInterface {
-  base?: string;
-
-  list(): Promise<any>;
-  index(id: number): Promise<any>;
-  create(): Promise<any>;
-  update(id: number): Promise<any>;
-  remove(id: number): Promise<any>;
-}
+import { ControllerInterface } from './Iterfaces';
 
 export class BaseController implements ControllerInterface {
 
@@ -41,5 +34,13 @@ export class BaseController implements ControllerInterface {
 
   public async remove(id: number) {
     return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
+  }
+
+  public getModelPayload(model: any, exceptof: string[] = ['id', 'createdAt', 'updatedAt']) {
+    const modelFields = getConnection()
+      .getMetadata(model).columns
+      .map(col => col.propertyName);
+
+    return _(this.req.body).pick(modelFields).omit(exceptof).value();
   }
 }

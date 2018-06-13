@@ -22,7 +22,7 @@ export class Collection implements EntityInterface {
   @UpdateDateColumn()
   public updatedAt: Date;
 
-  public validate(): boolean {
-    return true;
+  public validate(): string[] {
+    return [];
   }
 }
