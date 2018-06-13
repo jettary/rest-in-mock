@@ -13,8 +13,8 @@
     "watch": "nodemon --watch '**/*.ts' --exec ./node_modules/.bin/ts-node ./app.ts",
 
     "migration:create": "typeorm --config=config/Database --connection=default migration:create",
-    "premigration:run": "npm run prestart",
-    "migration:run": "NODE_ENV=migration typeorm --config=compiled/config/Database --connection=default migration:run"
+    "migration:run": "NODE_ENV=migration typeorm --config=compiled/config/Database --connection=default migration:run",
+    "migration:revert": "NODE_ENV=migration typeorm --config=compiled/config/Database --connection=default migration:revert"
   },
   "keywords": [
     "rest",

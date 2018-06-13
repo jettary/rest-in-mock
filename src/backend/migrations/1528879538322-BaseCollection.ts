@@ -7,6 +7,7 @@ export class BaseCollection1528879538322 implements MigrationInterface {
     await queryRunner.query(`
       CREATE TABLE public.collection (
         id SERIAL PRIMARY KEY,
+        name TEXT NOT NULL,
         model JSONB NOT NULL DEFAULT '{}'::JSONB,
         "createdAt" TIMESTAMP NOT NULL,
         "updatedAt" TIMESTAMP NOT NULL
@@ -19,7 +20,7 @@ export class BaseCollection1528879538322 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<any> {
 
-    await queryRunner.query(`DROP TABLE IF EXIST public.collection;`);
+    await queryRunner.query(`DROP TABLE IF EXISTS public.collection;`);
 
   }
 
