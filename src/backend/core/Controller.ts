@@ -1,7 +1,17 @@
 import { NextFunction, Request, Response } from 'express';
 import { GeneralException } from './Exceptions';
 
-export class BaseController {
+export interface ControllerInterface {
+  base?: string;
+
+  list(): Promise<any>;
+  index(id: number): Promise<any>;
+  create(): Promise<any>;
+  update(id: number): Promise<any>;
+  remove(id: number): Promise<any>;
+}
+
+export class BaseController implements ControllerInterface {
 
   public static base: string = '';
 
@@ -13,23 +23,23 @@ export class BaseController {
     [ this.req, this.res, this.next ] = [req, res, next];
   }
 
-  public list() {
+  public async list() {
     return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 
-  public index(id: number) {
+  public async index(id: number) {
     return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 
-  public create() {
+  public async create() {
     return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 
-  public update(id: number) {
+  public async update(id: number) {
     return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 
-  public remove(id: number) {
+  public async remove(id: number) {
     return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 }

@@ -4,11 +4,12 @@ export class GeneralException extends Error {
   protected msg: string;
   protected extra: object = {};
 
-  constructor(code, message) {
+  constructor(code, message, extra = {}) {
     super(message);
 
     this.code = code;
     this.msg = message;
+    this.extra = extra;
   }
 
   public toJSON() {
