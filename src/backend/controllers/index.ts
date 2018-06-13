@@ -1,0 +1,1 @@
+export { CollectionController } from './Collection';

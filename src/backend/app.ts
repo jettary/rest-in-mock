@@ -4,10 +4,14 @@ import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import { createConnection } from 'typeorm';
 import { default as connectionOptions } from './config/Database';
+import { Mount } from './core/Router';
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+/* Mount Controllers */
+Mount(app);
 
 const server = http.createServer(app);
 
