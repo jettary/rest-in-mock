@@ -3,8 +3,8 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import { createConnection } from 'typeorm';
-import { default as connectionOptions } from './config/Database';
 import { Mount } from './core/Router';
+const connectionOptions = require('./config/Database');
 
 const app = express();
 app.use(bodyParser.json());

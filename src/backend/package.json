@@ -6,8 +6,15 @@
   "main": "app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+
+    "prestart": "tsc --project tsconfig.json --outDir compiled/",
     "start": "pm2 start ./compiled/app.js --no-daemon",
-    "watch": "nodemon --watch '**/*.ts' --exec ./node_modules/.bin/ts-node ./app.ts"
+
+    "watch": "nodemon --watch '**/*.ts' --exec ./node_modules/.bin/ts-node ./app.ts",
+
+    "migration:create": "typeorm --config=config/Database --connection=default migration:create",
+    "premigration:run": "npm run prestart",
+    "migration:run": "NODE_ENV=migration typeorm --config=compiled/config/Database --connection=default migration:run"
   },
   "keywords": [
     "rest",

@@ -1,10 +1,12 @@
-import { ConnectionOptions } from 'typeorm';
-
-export default [{
+module.exports = [{
   type: 'postgres',
+  name: 'default',
 
   entities: [
     (process.env.NODE_ENV !== 'local') ? 'compiled/models/*.js' : 'models/*.ts'
+  ],
+  migrations: [
+    (process.env.NODE_ENV !== 'local') ? 'compiled/migrations/*.js' : 'migrations/*.ts'
   ],
 
   host: process.env.DB_HOST,
@@ -14,4 +16,9 @@ export default [{
   database: process.env.DB_NAME,
 
   logging: [`error`],
-}] as [ConnectionOptions];
+
+  cli: {
+    entitiesDir: 'models',
+    migrationsDir: 'migrations',
+  }
+}];

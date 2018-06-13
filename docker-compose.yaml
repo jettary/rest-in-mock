@@ -6,7 +6,6 @@ services:
     ports:
       - '5432:5432'
     environment:
-      - NODE_ENV=local
       - POSTGRES_DB=rest_mock_db
       - POSTGRES_USER=rest_mock_user
       - POSTGRES_PASSWORD=rest_mock_password
@@ -27,7 +26,7 @@ services:
       - '3000:3000'
     command: npm run watch
     environment:
-      - ENVIRONMENT=local
+      - NODE_ENV=local
       - DB_HOST=postgres
       - DB_NAME=rest_mock_db
       - DB_USER=rest_mock_user
