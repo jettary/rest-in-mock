@@ -9,8 +9,8 @@ export class BaseCollection1528879538322 implements MigrationInterface {
         id SERIAL PRIMARY KEY,
         name TEXT NOT NULL,
         model JSONB NOT NULL DEFAULT '{}'::JSONB,
-        "createdAt" TIMESTAMP NOT NULL,
-        "updatedAt" TIMESTAMP NOT NULL
+        "createdAt" TIMESTAMP NOT NULL DEFAULT now(), 
+        "updatedAt" TIMESTAMP NOT NULL DEFAULT now()
       ) WITH (
         OIDS = FALSE
       );
