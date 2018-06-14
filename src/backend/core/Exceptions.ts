@@ -1,3 +1,5 @@
+import {ModelError} from "./Iterfaces";
+
 export class GeneralException extends Error {
 
   protected code: string;
@@ -24,6 +26,14 @@ export class NotFound extends GeneralException {
 
   constructor(message) {
     super('NOT_FOUND', message);
+  }
+
+}
+
+export class InvalidRerquest extends GeneralException {
+
+  constructor(errors: ModelError[], message: string = 'Invalid request') {
+    super('INVALID_REQUEST', message, { errors });
   }
 
 }

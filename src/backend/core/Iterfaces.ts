@@ -2,7 +2,7 @@ export interface EntityInterface {
   orderBys?: string[];
   fallbackOrderBys?: string[];
 
-  validate(): string[];
+  validate(): ModelError[];
 }
 
 export interface ControllerInterface {
@@ -13,4 +13,14 @@ export interface ControllerInterface {
   create(): Promise<any>;
   update(id: number): Promise<any>;
   remove(id: number): Promise<any>;
+}
+
+export interface ModelFieldError {
+  constraint: string;
+  message: string;
+}
+
+export interface ModelError {
+  field: string;
+  errors: ModelFieldError[];
 }

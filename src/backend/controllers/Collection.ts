@@ -3,7 +3,7 @@ import { getRepository, Repository } from 'typeorm';
 import { applyRequest } from '../core/helpers';
 import { Collection } from '../models/Collection';
 import { ControllerInterface } from '../core/Iterfaces';
-import { GeneralException, NotFound } from '../core/Exceptions';
+import { InvalidRerquest, NotFound } from '../core/Exceptions';
 
 export class CollectionController extends BaseController implements ControllerInterface {
 
@@ -28,10 +28,10 @@ export class CollectionController extends BaseController implements ControllerIn
 
   public async create() {
     const instance = this.repository.create(this.getModelPayload(Collection));
-    const errors = instance.validate();
 
+    const errors = instance.validate();
     if (errors.length) {
-      return this.res.status(400).json(new GeneralException('INVALID_REQUEST', 'Invalid request'));
+      return this.res.status(400).json(new InvalidRerquest(errors));
     }
 
     await this.repository.save(instance);
@@ -60,7 +60,7 @@ export class CollectionController extends BaseController implements ControllerIn
 
     const errors = collection.validate();
     if (errors.length) {
-      return this.res.status(400).json(new GeneralException('INVALID_REQUEST', 'Invalid request'));
+      return this.res.status(400).json(new InvalidRerquest(errors));
     }
 
     await this.repository.save(collection);
