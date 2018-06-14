@@ -32,7 +32,7 @@ export class NotFound extends GeneralException {
 
 }
 
-export class InvalidRerquest extends GeneralException {
+export class InvalidRequest extends GeneralException {
 
   constructor(errors: ModelError[], message: string = 'Invalid request') {
     super('INVALID_REQUEST', message, { errors });

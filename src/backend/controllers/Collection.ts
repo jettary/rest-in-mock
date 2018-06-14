@@ -3,7 +3,7 @@ import { getRepository, Repository } from 'typeorm';
 import { applyRequest } from '../core/helpers';
 import { Collection } from '../models/Collection';
 import { ControllerInterface } from '../core/Iterfaces';
-import { InvalidRerquest, NotFound } from '../core/Exceptions';
+import { InvalidRequest, NotFound } from '../core/Exceptions';
 
 export class CollectionController extends BaseController implements ControllerInterface {
 
@@ -31,7 +31,7 @@ export class CollectionController extends BaseController implements ControllerIn
 
     const errors = instance.validate();
     if (errors.length) {
-      return this.res.status(400).json(new InvalidRerquest(errors));
+      return this.res.status(400).json(new InvalidRequest(errors));
     }
 
     await this.repository.save(instance);
@@ -60,7 +60,7 @@ export class CollectionController extends BaseController implements ControllerIn
 
     const errors = collection.validate();
     if (errors.length) {
-      return this.res.status(400).json(new InvalidRerquest(errors));
+      return this.res.status(400).json(new InvalidRequest(errors));
     }
 
     await this.repository.save(collection);

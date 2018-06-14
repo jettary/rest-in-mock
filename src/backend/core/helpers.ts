@@ -61,11 +61,11 @@ function getLimitOffset(req: Request): { limit: number, offset: number } {
   const offset = 'offset' in req.query ? parseInt(req.query.offset, 10) : OFFSET;
 
   if (!_.isSafeInteger(limit) || limit < 0) {
-    throw new GeneralException('INVALID_REQUEST', `"limit" should be finite positiv number`);
+    throw new GeneralException('INVALID_REQUEST', `"limit" should be finite positive number`);
   }
 
   if (!_.isSafeInteger(offset) || offset < 0) {
-    throw new GeneralException('INVALID_REQUEST', `"offset" should be finite positiv number`);
+    throw new GeneralException('INVALID_REQUEST', `"offset" should be finite positive number`);
   }
 
   return { limit, offset };
