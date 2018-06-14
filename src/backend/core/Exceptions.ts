@@ -1,22 +1,24 @@
-import {ModelError} from "./Iterfaces";
+import { ModelError } from './Iterfaces';
 
-export class GeneralException extends Error {
+export class GeneralException {
 
+  protected message: string;
+  protected stack: any;
   protected code: string;
-  protected msg: string;
   protected extra: object = {};
 
   constructor(code, message, extra = {}) {
-    super(message);
+    const err = new Error(message);
 
+    this.message = message;
+    this.stack = err.stack;
     this.code = code;
-    this.msg = message;
     this.extra = extra;
   }
 
   public toJSON() {
     return {
-      error: { code: this.code, message: this.msg, extra: this.extra }
+      error: { code: this.code, message: this.message, extra: this.extra }
     };
   }
 

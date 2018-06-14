@@ -1,3 +1,5 @@
+export type RouterAction = 'list' | 'index' | 'create' | 'update' | 'remove';
+
 export interface EntityInterface {
   orderBys?: string[];
   fallbackOrderBys?: string[];
