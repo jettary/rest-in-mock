@@ -9,7 +9,7 @@ export class CollectionController extends BaseController implements ControllerIn
 
   public static base: string = '/api/collections';
 
-   public repository: Repository<Collection>;
+  public repository: Repository<Collection>;
 
   constructor(req, res, next) {
     super(req, res, next);

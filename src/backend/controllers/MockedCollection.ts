@@ -6,7 +6,7 @@ import { ControllerInterface } from '../core/Iterfaces';
 
 export class MockedCollectionController extends BaseController implements ControllerInterface {
 
-  public static base: string = '/mocks/:collection([a-z][a-z\\-]+?[a-z])';
+  public static base: string = '/mocks/:collection([a-z][a-z\\-]+?\\b)';
 
   public repository: Repository<Collection>;
 
