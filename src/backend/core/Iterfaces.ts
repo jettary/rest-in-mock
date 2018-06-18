@@ -26,3 +26,42 @@ export interface ModelError {
   field: string;
   errors: ModelFieldError[];
 }
+
+export interface MockInterface {
+  /* [REQUIRED]
+  * type of field:
+  * - number
+  * - string
+  * - boolean
+  * - array<number | string | boolean | object>, should be defined by `properties`
+  * - object<T>, should be defined by `properties`
+  * */
+  type: 'number';
+
+  /* [REQUIRED]
+  * required, default to true
+  * */
+  required: boolean;
+
+  /* [OPTIONAL]
+  * Could be value represented as `null`
+  * */
+  nullAllowed: boolean;
+
+  /* [OPTIONAL]
+  * Format for each type
+  * - number: integer | float
+  * - string: [DEFAULT] hex | name | date | datetime
+  * */
+  format?: 'integer' | 'float';
+
+  /* [OPTIONAL]
+  * Defines every item of `array`
+  * OR properties of `object`
+  * */
+  properties?: MockInterface; // for type 'array' or 'object'
+}
+
+export interface MockModel {
+  [key: string]: MockInterface;
+}

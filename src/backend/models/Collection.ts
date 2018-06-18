@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { EntityInterface, ModelError, ModelFieldError } from '../core/Iterfaces';
+import { EntityInterface, MockModel, ModelError, ModelFieldError } from '../core/Iterfaces';
 
 @Entity()
 export class Collection implements EntityInterface {
@@ -21,7 +21,7 @@ export class Collection implements EntityInterface {
   public description: string = ``;
 
   @Column({ type: 'jsonb', default: '{}' })
-  public model: object = {};
+  public model: MockModel = {};
 
   @CreateDateColumn()
   public createdAt: Date;
