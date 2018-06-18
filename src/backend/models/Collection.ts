@@ -14,6 +14,12 @@ export class Collection implements EntityInterface {
   @Column({ type: 'text', nullable: false })
   public name: string;
 
+  @Column({ type: 'text', nullable: false })
+  public title: string;
+
+  @Column({ type: 'text', nullable: false, default: '' })
+  public description: string = ``;
+
   @Column({ type: 'jsonb', default: '{}' })
   public model: object = {};
 
@@ -27,6 +33,8 @@ export class Collection implements EntityInterface {
     const errors: { [key: string]: ModelFieldError[] } = {
       name: [],
       model: [],
+      title: [],
+      description: [],
     };
 
     /*
@@ -59,6 +67,49 @@ export class Collection implements EntityInterface {
       errors.name.push({
         constraint: 'invalid',
         message: `Field "name" should be string [4, 32] chars longs`
+      });
+    }
+
+    /*
+    * `title` validation
+    * */
+    if (!this.title) {
+      errors.name.push({
+        constraint: 'required',
+        message: 'Field "title" required'
+      });
+    }
+
+    if (_.isString(this.title))  {
+      // validate length
+      if (this.title.length < 4 || this.title.length > 32) {
+        errors.title.push({
+          constraint: 'length',
+          message: `Field "title" should be at least 4 and no more 32 chars longs`
+        });
+      }
+    } else {
+      errors.title.push({
+        constraint: 'invalid',
+        message: `Field "title" should be string [4, 32] chars longs`
+      });
+    }
+
+    /*
+    * `description` validation
+    * */
+    if (_.isString(this.description))  {
+      // validate length
+      if (this.description.length > 1000) {
+        errors.name.push({
+          constraint: 'length',
+          message: `Field "description" should be no more 1000 chars longs`
+        });
+      }
+    } else {
+      errors.description.push({
+        constraint: 'invalid',
+        message: `Field "description" should be string [0, 1000] chars longs`
       });
     }
 
