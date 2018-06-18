@@ -27,7 +27,7 @@ export const Mount = (app: Express) => {
 function makeHandler(action: RouterAction, controllerKlass: any) {
   return async (req: Request, res: Response, next: NextFunction) => {
     const instance = new controllerKlass(req, res, next);
-    const args = _.values(req.params);
+    const args = _.values(req.params).reverse();
 
     try {
       await instance[action](...args);

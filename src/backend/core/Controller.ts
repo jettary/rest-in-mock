@@ -16,23 +16,23 @@ export class BaseController implements ControllerInterface {
     [ this.req, this.res, this.next ] = [req, res, next];
   }
 
-  public async list() {
+  public async list(...args) {
     return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 
-  public async index(id: number) {
+  public async index(id: number, ...args) {
     return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 
-  public async create() {
+  public async create(...args) {
     return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 
-  public async update(id: number) {
+  public async update(id: number, ...args) {
     return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 
-  public async remove(id: number) {
+  public async remove(id: number, ...args) {
     return this.res.status(501).json(new GeneralException('NOT_IMPLEMENTED', 'Not Implemented'));
   }
 

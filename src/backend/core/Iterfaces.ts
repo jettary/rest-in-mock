@@ -10,11 +10,11 @@ export interface EntityInterface {
 export interface ControllerInterface {
   base?: string;
 
-  list(): Promise<any>;
-  index(id: number): Promise<any>;
-  create(): Promise<any>;
-  update(id: number): Promise<any>;
-  remove(id: number): Promise<any>;
+  list(...args): Promise<any>;
+  index(id: number, ...args): Promise<any>;
+  create(...args): Promise<any>;
+  update(id: number, ...args): Promise<any>;
+  remove(id: number, ...args): Promise<any>;
 }
 
 export interface ModelFieldError {
